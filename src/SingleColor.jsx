@@ -1,11 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import rgbToHex from './utils';
 
-const SingleColor = ({ rgb, weight, index }) => {
+const SingleColor = ({ rgb, weight, index, hexColor }) => {
+  console.log(hexColor);
   const [alert, setAlert] = useState(false);
   const bcg = rgb.join(',');
-  console.log(bcg);
-  return <h4>single color</h4>;
+  const hex = rgbToHex(...rgb);
+  const hexValue = `#${hexColor}`;
+
+  return (
+    <section
+      className={`color ${index > 10 && 'color-light'}`}
+      style={{ backgroundColor: `rgb(${bcg})` }}
+    >
+      <p className='percent-value'>{weight}%</p>
+      <p className='color-value'>{hexValue}</p>
+    </section>
+  );
 };
 
 export default SingleColor;
